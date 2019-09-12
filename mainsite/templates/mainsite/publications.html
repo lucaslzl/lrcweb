@@ -1,0 +1,202 @@
+{% extends "mainsite/basepage.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headbooks">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#books" aria-expanded="true" aria-controls="collbooks">
+                    Books
+                </a>
+            </h5>
+        </div>
+
+        <div id="books" class="collapse show" aria-labelledby="books" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h2>Books published</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                        <ul>
+                            {% for b in book %}
+                                <li>{{ b.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <h2>Book chapters published</h2><br/>
+                        <ul>
+                            {% for b in book_chapter %}
+                                <li>{{ b.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headjournal">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#journal" aria-expanded="true" aria-controls="colljournal">
+                    Journal
+                </a>
+            </h5>
+        </div>
+
+        <div id="journal" class="collapse" aria-labelledby="journal" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h2>International Journal</h2>
+                        <ul>
+                            {% for j in int_journal %}
+                                <li>{{ j.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <h2>National Journal</h2>
+                        <ul>
+                            {% for j in braz_journal %}
+                                <li>{{ j.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headconference">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#conference" aria-expanded="true" aria-controls="collconference">
+                    Conference Proceedings
+                </a>
+            </h5>
+        </div>
+
+        <div id="conference" class="collapse" aria-labelledby="conference" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h2>Papers in International Conference Proceedings</h2>
+                        <ul>
+                            {% for c in int_conference %}
+                                <li>{{ c.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <h2>Papers in Brazilian Conference Proceedings</h2>
+                        <ul>
+                            {% for c in braz_conference %}
+                                <li>{{ c.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headthesis">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#thesis" aria-expanded="true" aria-controls="collthesis">
+                    Thesis
+                </a>
+            </h5>
+        </div>
+
+        <div id="thesis" class="collapse" aria-labelledby="thesis" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h2>Doctorate Thesis</h2>
+                        <ul>
+                            {% for t in doc_thesis %}
+                                <li>{{ t.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <h2>Master Thesis</h2>
+                        <ul>
+                            {% for t in ms_thesis %}
+                                <li>{{ t.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headreports">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#reports" aria-expanded="true" aria-controls="collreports">
+                    Technical Reports
+                </a>
+            </h5>
+        </div>
+
+        <div id="reports" class="collapse" aria-labelledby="reports" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul>
+                             {% for r in tech_reports %}
+                                <li>
+                                    <b>{{ r.reference }}</b>
+                                    {% if r.pdf != None %}
+                                        <a href="/static/media/{{r.pdf}}" target="_blank"> (PDF)</a>
+                                    {% endif %}
+                                    <br/>
+                                    {{ r.authors }}<br/>
+                                    {{ r.abstract }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headawards">
+            <h5 class="mb-0">
+                <a class="btn btn-link-me bolder" data-toggle="collapse" href="#awards" aria-expanded="true" aria-controls="collawards">
+                    Recognition Awards
+                </a>
+            </h5>
+        </div>
+
+        <div id="awards" class="collapse" aria-labelledby="awards" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul>
+                             {% for r in rec_awards %}
+                                <li>{{ r.reference }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

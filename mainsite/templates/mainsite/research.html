@@ -1,0 +1,116 @@
+{% extends "mainsite/basepage.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headresearch">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me bolder" data-toggle="collapse" href="#research" aria-expanded="true" aria-controls="collresearch">
+                        Research Interests
+                    </a>
+                </h5>
+            </div>
+
+            <div id="research" class="collapse show" aria-labelledby="research" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            The main research interests in the laboratory are listed below.<br/>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {% for r in research %}
+                                    <li>{{r.name}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headprojects">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me bolder collapsed" data-toggle="collapse" href="#projects" aria-expanded="false" aria-controls="collprojects">
+                        Projects
+                    </a>
+                </h5>
+            </div>
+            <div id="projects" class="collapse" aria-labelledby="projects" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h3>Current Sponsored Research Projects</h3>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {% for p in curr %}
+                                    {% if p.type == 'Sponsored Research' %}
+                                        <li>{{p.name}}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <h3>Current International Cooperation Sponsored Research</h3>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {% for p in curr %}
+                                    {% if p.type == 'International Cooperation Sponsored Research' %}
+                                        <li>{{p.name}}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <h3>Past Projects</h3>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                {% for p in past %}
+                                <li><b>{{p.name}}</b><br/>
+                                        <div style="text-align: justify;">{{p.abstract}}</div>
+                                        Sponsor: {{p.sponsor}}
+                                    </li>
+                                <br/>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headthesis">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me bolder collapsed" data-toggle="collapse" href="#thesis" aria-expanded="false" aria-controls="collthesis">
+                        Ongoing Thesis
+                    </a>
+                </h5>
+            </div>
+            <div id="thesis" class="collapse" aria-labelledby="thesis" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ul>
+                                {% for t in thesis %}
+                                <li><b>{{t.name}}</b><br/>
+                                        Professor: {{t.professor}}
+                                    </li>
+                                <br/>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

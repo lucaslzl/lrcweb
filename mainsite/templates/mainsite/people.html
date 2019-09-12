@@ -1,0 +1,339 @@
+{% extends "mainsite/basepage.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <span style="text-align: justify;">
+    The Computer Network Laboratory is co-managed by Prof. Edmundo Madeira and Prof. Nelson Fonseca and it hosts graduate and undergraduate student as well as pos-docs and visitors.
+    </span>
+    <br/><br/><br/>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headprof">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me" data-toggle="collapse" href="#professors" aria-expanded="true" aria-controls="collprof">
+                        Professors
+                    </a>
+                </h5>
+            </div>
+
+            <div id="professors" class="collapse show" aria-labelledby="professors" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in prof %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">all_inclusive</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headpos">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#posdoc" aria-expanded="false" aria-controls="collapos">
+                        Pos-doc-students
+                    </a>
+                </h5>
+            </div>
+            <div id="posdoc" class="collapse" aria-labelledby="posdoc" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in pos %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">memory</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headphd">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#phd" aria-expanded="false" aria-controls="collapseThree">
+                        PhD students
+                    </a>
+                </h5>
+            </div>
+            <div id="phd" class="collapse" aria-labelledby="phd" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in phd %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">free_breakfast</i>
+                                            <i class="material-icons md-dark md-size icon-card float-icon">free_breakfast</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headmsc">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#msc" aria-expanded="false" aria-controls="collamsc">
+                        MSc students
+                    </a>
+                </h5>
+            </div>
+            <div id="msc" class="collapse" aria-labelledby="msc" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in msc %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">free_breakfast</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headunder">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#under" aria-expanded="false" aria-controls="collaunder">
+                        Undergraduate students
+                    </a>
+                </h5>
+            </div>
+            <div id="under" class="collapse" aria-labelledby="under" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in under %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+					    <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+					    {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">school</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headalumni">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#alumni" aria-expanded="false" aria-controls="collalumni">
+                        Alumni
+                    </a>
+                </h5>
+            </div>
+            <div id="alumni" class="collapse" aria-labelledby="alumni" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in alumni %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            	<p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            <p class="card-text">{{ p.project }}</p>
+                                            <p class="card-text">{{ p.title }} - {{ p.year }}</p>
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">spa</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headcollab">
+                <h5 class="mb-0">
+                    <a class="btn btn-link-me collapsed" data-toggle="collapse" href="#collab" aria-expanded="false" aria-controls="collacollab">
+                        Collaborators
+                    </a>
+                </h5>
+            </div>
+            <div id="collab" class="collapse" aria-labelledby="collab" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% for p in collab %}
+                                <div class="col-sm-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                                    <div class="card shadow bg-white rounded" style="width: 18rem;">
+                                        {% if p.picture == '' %}
+                                            <img class="card-img-top" src="/static/profblank.png" alt="Card image cap">
+                                        {% else %}
+                                            <img class="card-img-top" src="/static/media/{{p.picture}}" alt="Card image cap">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ p.name }}</h5>
+                                            {% if p.email != None %}
+                                            <p class="card-text">{{ p.email }}</p>
+                                            {% endif %}
+                                            {% if p.site != None %}
+                                                <a href="{{ p.site }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">language</i>
+                                                </a>
+                                            {% endif %}
+                                            {% if p.lattes != None %}
+                                                <a href="{{ p.lattes }}" target="_blank">
+                                                    <i class="material-icons md-dark md-size icon-card">assignment</i>
+                                                </a>
+                                            {% endif %}
+                                            <i class="material-icons md-dark md-size icon-card float-icon">public</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

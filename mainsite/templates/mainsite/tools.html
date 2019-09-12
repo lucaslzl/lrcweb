@@ -1,0 +1,14 @@
+{% extends "mainsite/basepage.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h2>Tools</h2>
+
+    {% for t in tools %}
+        <h3>{{ t.name }}</h3><br/>
+        <div style="text-align: justify;">{{ t.description }}</div><br/>
+        <a href="{{ t.link }}" target="_blank">{{ t.link }}</a>
+        <br/><br/><br/>
+    {% endfor %}
+{% endblock %}

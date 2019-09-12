@@ -1,0 +1,17 @@
+{% extends "mainsite/basepage.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h2>Videos</h2>
+
+    {% for v in videos %}
+        <h3>{{ v.name }}</h3>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe title="YouTube video player" class="embed-responsive-item" type="text/html"
+                    src="{{ v.link }}" frameborder="1" allowFullScreen></iframe>
+        </div>
+        <br/><br/><br/>
+    {% endfor %}
+
+{% endblock %}

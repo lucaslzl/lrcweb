@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" />
+    <title>Computer Networks Laboratory</title>
+
+    <link type="text/css" rel="stylesheet"  href="/static/bootstrap/css/bootstrap.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/static/main.css">
+    
+    <script src="/static/jquery-3.3.1.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+
+    <style>
+        {% block styles %}{% endblock %}
+    </style>
+
+    <script type="text/javascript">
+        {% block scripts %}{% endblock %}
+        $( document ).ready(function() {
+            $('body').on('click', '.btn_open_menu', function() {
+                $(".side_menu").show("fast", function(){});
+            });
+            $(document).mouseup(function(e){
+                var menu = $(".side_menu");
+                if (!menu.is(e.target) && menu.has(e.target).length === 0) {
+                    menu.css({'display':'none'});
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+<div class="side_menu">
+    <ul class="nav flex-column">
+
+      <li class="nav-item">
+        <a class="nav-item nav-link nav-it" href="/">
+            <i class="material-icons md-size icon-card nav-it-align">home</i>
+            <span class="nav-it-align">Home</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/people/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">people</i>
+            <span class="nav-it-align">People</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/research/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">pie_chart</i>
+            <span class="nav-it-align">Research</span>
+            </a>
+      </li>
+      <li class="nav-item">
+        <a href="/publications/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">description</i>
+            <span class="nav-it-align">Publications</span>
+            </a>
+      </li>
+      <li class="nav-item">
+        <a href="/tools/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">link</i>
+            <span class="nav-it-align">Tools</span>
+            </a>
+      </li>
+      <li class="nav-item">
+        <a href="/videos/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">video_library</i>
+            <span class="nav-it-align">Videos</span>
+            </a>
+      </li>
+      <li class="nav-item">
+        <a href="/contact/" class="nav-item nav-link nav-it">
+            <i class="material-icons md-size icon-card nav-it-align">alternate_email</i>
+            <span class="nav-it-align">Contact</span>
+            </a>
+      </li>
+    </ul>
+</div>
+
+<div class="container-fluid" id="page_content">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row margin-header">
+                <div id="div_open_menu">
+                    <button class="navbar-toggler nav-btn navbar-dark btn_open_menu" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon nav-btn"></span>
+                    </button>
+                </div>
+                <div class="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <img class="img-fluid" src="/static/logo_lrc.jpg">
+                </div>
+                <div class="col-3 offset-0 col-sm-2 col-md-2 offset-md-0 col-lg-1 offset-lg-2 col-xl-1">
+                    <img class="img-fluid" src="/static/logo_unicamp.png">
+                </div>
+                <div class="col-3 offset-5 col-sm-2 offset-sm-0 col-md-2 col-lg-1 col-xl-1">
+                    <img class="img-fluid" src="/static/logo_ic.png">
+                </div>
+            </div>
+
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="row">
+        <div class="col-12 col-sm-7 offset-sm-3 col-md-7 offset-md-5 col-lg-5 col-xl-3">
+            <img class="img-fluid" src="/static/logo_lrc.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 offset-2 col-sm-12 offset-sm-5 col-md-12 offset-lg-5
+        col-xs-12 offset-xl-6 align-self-center">
+            <label>© 2019 Computer Networks Laboratory</label>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
